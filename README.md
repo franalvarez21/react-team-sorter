@@ -12,6 +12,6 @@ To Run project:
 
 ### `npm run build`
 
-### `npm start`
+### `npm run start`
 
 ### `npm test`
