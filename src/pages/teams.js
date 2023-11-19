@@ -19,17 +19,14 @@ class Teams extends Component {
     
     this.state = {
       member : '',
+      sorter : new Sorter(3, []),
       members : [],
-      sorter : new Sorter(3, members),
-      teams : []
+      teams : [],
+      teamSize : 3
     }
     
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  updateList(){
-
   }
 
   updateInput(event){
@@ -41,6 +38,7 @@ class Teams extends Component {
     { 
       this.state.sorter.addMember(createMember(this.state.member, 1));
       this.state.members = this.state.sorter.getMembers();
+      this.state.sorter.executeSorting();
       this.state.teams = this.state.sorter.getTeams();
       this.setState({ state: this.state });
     }
@@ -53,7 +51,7 @@ class Teams extends Component {
       <header className="Main-content">
         <img src={logo} className="Second-logo" alt="logo" />
         <div className='Component-normal'>
-          <HeaderOptions sorter={this.state.sorter} onClick={this.updateList}/>
+          <HeaderOptions />
         </div>
         <div className='rowColumn'>
           <div className='Component-normal'>
@@ -64,6 +62,7 @@ class Teams extends Component {
             </Box>
             <Members members={this.state.members} />
           </div>
+          <div style={{width: 50, height: 50}} />
           <div className='Component-normal Table-content'>
             <TeamList teams={this.state.teams} />
           </div>

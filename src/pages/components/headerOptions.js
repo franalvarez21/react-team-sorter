@@ -8,20 +8,16 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ClearIcon from '@mui/icons-material/Clear';
-import MemoryIcon from '@mui/icons-material/Memory';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import FileUploadIcon from '@mui/icons-material/FileUpload';
 
-function HeaderOptions({sorter}) {
+function HeaderOptions() {
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
-  const generateTeams = () => {
-    sorter.executeSorting();
-    sorter.showTeams();
+  function refreshPage() {
+    window.location.reload(false);
   };
 
   return (
@@ -35,31 +31,7 @@ function HeaderOptions({sorter}) {
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }} onClick={generateTeams}>
-            <ListItemIcon>
-              <MemoryIcon />
-            </ListItemIcon>
-            <ListItemText primary="Generate Teams" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <FileDownloadIcon />
-            </ListItemIcon>
-            <ListItemText primary="Export Teams" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <FileUploadIcon />
-            </ListItemIcon>
-            <ListItemText primary="Load Teams" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <FileUploadIcon />
-            </ListItemIcon>
-            <ListItemText primary="Load Members" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={refreshPage}>
             <ListItemIcon>
               <ClearIcon />
             </ListItemIcon>

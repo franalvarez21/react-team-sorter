@@ -76,6 +76,13 @@ code {
   min-width: 250px;
 }
 
+.Component-side {
+  background-color: white;
+  color: black;
+  font-size: calc(20px + 2vmin);
+  min-width: 20px;
+}
+
 .Table-content {
   background-color: lightblue;
 }

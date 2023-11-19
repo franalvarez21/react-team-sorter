@@ -22,13 +22,20 @@ function TeamList({teams}) {
     return (
       <Box className="teamBox">
         <List>
-          {teams.map((team) => {
-            const labelId = `checkbox-list-label-${team.getMembers()[0].alias}`;
+          {
+            teams.map((team, index) => {
+              if(team.getMembers().length > 0)
+              {
+                const labelId = `checkbox-list-label-${index}`;
+                const users = team.getMembers().map(a => a.alias).toString(", ");
 
-            return (
-              <ListItemText className='teamText' primary={team.getMembers()[0].alias} />
-            );
-          })}
+                return (
+                  <ListItemText className='teamText' primary={`Team ${index}: ${users}`}>
+                  </ListItemText>
+                );
+              }
+            })
+          }
         </List>
       </Box>
     );
