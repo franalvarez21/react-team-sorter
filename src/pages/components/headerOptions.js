@@ -12,11 +12,16 @@ import MemoryIcon from '@mui/icons-material/Memory';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
-function HeaderOptions() {
+function HeaderOptions({sorter}) {
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(!open);
+  };
+
+  const generateTeams = () => {
+    sorter.executeSorting();
+    sorter.showTeams();
   };
 
   return (
@@ -30,7 +35,7 @@ function HeaderOptions() {
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={generateTeams}>
             <ListItemIcon>
               <MemoryIcon />
             </ListItemIcon>

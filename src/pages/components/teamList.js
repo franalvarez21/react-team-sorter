@@ -18,22 +18,17 @@ function renderRow(props: ListChildComponentProps) {
   );
 }
 
-function TeamList() {
+function TeamList({teams}) {
     return (
       <Box className="teamBox">
         <List>
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
-          <ListItemText className='teamText' primary="Options" />
+          {teams.map((team) => {
+            const labelId = `checkbox-list-label-${team.getMembers()[0].alias}`;
+
+            return (
+              <ListItemText className='teamText' primary={team.getMembers()[0].alias} />
+            );
+          })}
         </List>
       </Box>
     );
